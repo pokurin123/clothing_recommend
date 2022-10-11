@@ -1,3 +1,4 @@
 /Users/taikikimura/Desktop/clothing_recommend/tops_bottoms_cut_test/yolov3-df2_15000.weights filter=lfs diff=lfs merge=lfs -text
 /Users/taikikimura/Desktop/clothing_recommend/tops_bottoms_cut_test/yolov3-df2.cfg filter=lfs diff=lfs merge=lfs -text
 /Users/taikikimura/Desktop/clothing_recommend/tops_bottoms_cut_test/yolov3-modanet_last.weights filter=lfs diff=lfs merge=lfs -text
+library_dir/fashion_cutting/yolov3-modanet_last.weights filter=lfs diff=lfs merge=lfs -text
