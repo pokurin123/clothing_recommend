@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- semantic ui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/show_detail.css') }}">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="holder" style="font-family: 'Josefin Sans', sans-serif;">
+        <div class="ui centered middle aligned grid">
+
+                <div class="seven wide column">
+                    <div class="ui segment" style="text-align: center;">
+                        <img src="{{url_for('static', filename=detail_img_path)}}" style="width: 400px; height:400px;">
+                    </div>
+                </div>
+                <!-- <div class="one wide column"></div> -->
+                <div class="seven wide column">
+                    <div class="ui segment">
+                        <div class="item_maker">
+                            shop:{{item_maker}}
+                        </div>
+                        <div class="item_name">
+                            {{item_name}}
+                        </div>
+                        <br>
+                        <div class="item_price">
+                            ¥{{item_price}}
+                        </div>
+                        <div class="ui raised segment">
+                            <a class="ui ribbon label">アイテム説明</a>
+                            <div class="item_ex_text">
+                                {{item_ex_text}}
+                            </div>
+                            <br>
+                            <a class="ui ribbon label">カテゴリー</a>
+                            <div class="item_category">
+                                category：{{item_category}}
+                            </div>
+                            <br>
+                            <a class="ui ribbon label">使用素材</a>
+                            <div class="item_material">
+                                materials：{{item_material}}
+                            </div>
+                            <br>
+                            <a class="ui ribbon label">アイテムコンセプト</a>
+                            <div class="item_concept">
+                                item concept：{{item_concept}}
+                            </div>
+                            <br>
+                            <a class="ui ribbon label">ショップリンク</a>
+                            <div class="item_url">
+                                shop link：<a href="{{item_url}}" target="_blank">商品ページへ</a>
+                            </div>
+                            <br>
+                            <a class="ui ribbon label">お気に入り</a>
+                            <br>
+                            <div style="display:flex;">
+                                <div class="good_num" style="margin-left: 10px; margin-right:10px; margin-top:8px;">
+                                    <i class="thumbs up large icon">{{good}}</i>
+                                </div>
+                                <div class="bad_num" style="margin-left: 10px; margin-right:10px; margin-top:8px;">
+                                    <i class="thumbs down large icon">{{bad}}</i>
+                                </div>
+                                
+                                <form name="good_form" onsubmit="return false;">
+                                    <div class="good_button" name="good_button" role="button" tabindex="0" style="margin-left: 10px; margin-right:5px;">
+                                        <button class="ui icon button">
+                                            <i class="thumbs up icon"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                                <form name="bad_form" onsubmit="return false;">
+                                    <div class="bad_button" name="bad_button" role="button" tabindex="0" style="margin-left: 5px; margin-right:5px;">
+                                        <button class="ui icon button">
+                                            <i class="thumbs down icon"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script>
+        const goodbuttonElement = document.querySelector("div.good_button");
+        const badbuttonElement = document.querySelector("div.bad_button");
+        const id_num = "{{id_}}";
+        goodbuttonElement.addEventListener("click", () => {
+            $.ajax("/good_def", {
+                type: "post",
+                data: id_num,  // POSTでサーバーに送信するデータ
+                dataType: "json",
+              }).done(function(data) { // 成功した場合実行される
+                console.log("Ajax通信 成功");
+              }).fail(function(data) { // 失敗した場合実行される
+                console.log("Ajax通信 失敗");
+          });
+        });
+        badbuttonElement.addEventListener("click", () => {
+            $.ajax("/bad_def", {
+                type: "post",
+                data: id_num,  // POSTでサーバーに送信するデータ
+                dataType: "json",
+              }).done(function(data) { // 成功した場合実行される
+                console.log("Ajax通信 成功");
+              }).fail(function(data) { // 失敗した場合実行される
+                console.log("Ajax通信 失敗");
+          });
+        });
+
+    </script>
+</body>
+</html>

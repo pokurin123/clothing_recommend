@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- semantic ui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/select_clothes.css') }}">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/show_result" name="form2" method="post" enctype="multipart/form-data">
+    <div class="ui grid">
+            <div class="four wide column">
+                <div class="cp_ipselect cp_sl04">
+                    <select name="select_clothes" required>
+                        <option disabled>Which clothes to use?</option>
+                        {% for clothe in all_files: %}
+                        <option value="{{ clothe }}">{{ clothe }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="cp_ipselect cp_sl04">
+                    <select name="select_which" required>
+                        <option disabled>Which one?</option>
+                        <option value="トップス">TOPS</option>
+                        <option value="ボトムス">BOTTOMS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="cp_ipselect cp_sl04">
+                    <select name="select_concept" required>
+                        <option disabled>Which concept?</option>
+                        <option value="天然素材">天然素材</option>
+                        <option value="リサイクル素材">リサイクル素材</option>
+                    </select>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="submit_button">
+                    <a href="javascript:form2.submit()">SEARCH</a>
+                </div>
+            </div>
+    </div>
+    <br>
+    </form>
+    <div class="ui main container" style="font-family: 'Josefin Sans', sans-serif;">
+        <div style="font-size: 40px;">DETECT TOPS</div>
+        <div class="ui segment">
+            {% if tops_num == 0: %}
+                <p style="font-size: 50px;">NO TOPS</p>
+            {% else: %}
+                {% for i in range(0,tops_num): %}
+                    <figure>
+                        <img src="{{url_for('static', filename=tops_files[i]) | safe}}" style="max-width:200px; max-height:200px">
+                        <figcaption>tops {{i | safe}}</figcaption>
+                    </figure>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <br><br>
+        <div style="font-size: 40px;">DETECT BOTTOMS</div>
+        <div class="ui segment">
+            {% if bottoms_num == 0: %}
+                <p style="font-size: 50px;">NO BOTTOMS</p>
+            {% else: %}
+                {% for i in range(0,bottoms_num): %}
+                    <figure>
+                        <img src="{{url_for('static', filename=bottoms_files[i]) | safe}}" style="max-width:200px; max-height:200px">
+                        <figcaption>bottoms {{i | safe}}</figcaption>
+                    </figure>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', (e) => {
+            history.go(1);
+        });
+        
+    </script>
+</body>
+</html>

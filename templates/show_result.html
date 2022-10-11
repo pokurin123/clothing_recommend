@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- semantic ui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/show_result.css') }}">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <p class="title_txt">Do you want this?</p>
+    <div class="ui main container" style="font-family: 'Josefin Sans', sans-serif;">
+        <div class="ui segment">
+            <div class="ui five column grid">
+                    <div class="row">
+                    {% for i in range(0,5): %}
+                        <div class="column">
+                            <form action="/show_detail" name="form2" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="detail_image" value="{{sim_list[i] | safe}}">
+                                <figure>
+                                    <input type="image" src="{{url_for('static', filename=sim_path_list[i]) | safe}}" style="max-width:200px; max-height:200px;">
+                                </figure>
+                            </form>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    {% for i in range(5,10): %}
+                        <div class="column">
+                            <form action="/show_detail" name="form2" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="detail_image" value="{{sim_list[i] | safe}}">
+                                <figure>
+                                    <input type="image" src="{{url_for('static', filename=sim_path_list[i]) | safe}}" style="max-width:200px; max-height:200px;">
+                                </figure>
+                            </form>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', (e) => {
+            history.go(1);
+        });
+    </script>
+</body>
+</html>

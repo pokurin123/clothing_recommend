@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(45deg, #EAECF0, #DEE9FF, #BAD2FF, #9BBEFF, #F2C1FF, #F0BBFF);
+    background-size: 1200% 1200%;
+    animation: GradientBackground 10s ease infinite;
+    font-family: 'Josefin Sans', sans-serif;
+    height: 600px;
+  }
+  p.title_txt{
+    font-size: 135px;
+    text-align: center;
+}
+
+.formm_box{
+    transform: translate(0px,-75px);
+}
+
+.input_button {
+    background: #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    height: 40px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+.input_button:hover {
+    background: #313131;
+    color: #FFF;
+}
+
+input {
+    display: none;
+}
+
+.show_image {
+    text-align: center;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+/* .submit_button{
+    text-align: center;
+} */
+/* .inv_button{
+    opacity: 0;
+} */
+.submit_button a {
+    background: #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    height: 40px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
+    text-decoration:none;
+}
+.submit_button a:hover {
+    background: #313131;
+    color: #FFF;
+    text-decoration:none;
+}
+
+@keyframes GradientBackground {
+0% {
+    background-position: 0% 50%;
+}
+
+50% {
+    background-position: 100% 50%;
+}
+
+100% {
+    background-position: 0% 50%;
+}
+};

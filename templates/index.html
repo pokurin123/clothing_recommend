@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <p class="title_txt">Input your image</p>
+
+    <!-- 画像アップロードフォーム -->
+    <div class="formm_box">
+        <form action="/select_clothes" name="form1" method="post" enctype="multipart/form-data">
+            <div class="input_button" role="button" tabindex="0">SELECT HERE</div>
+            <input type="file" name="input_clothes" onchange="previewImage(this);"/>
+            <div class="show_image">
+                <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:300px; max-height:300px;">
+            </div>
+            <div class="submit_button">
+                <a href="javascript:form1.submit()">DETECT CLOTHES</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // make input form from div
+        const buttonElement = document.querySelector("div.input_button");
+
+        buttonElement.addEventListener("click", () => {
+        document.querySelector("input").click();
+        });
+
+        // Space / Enter キーで click イベントを発火できるようにする
+        buttonElement.addEventListener("keydown", (event) => {
+        if (!buttonElement.isEqualNode(event.target)) {
+            return;
+        }
+
+        if (event.keyCode === 32 || event.keyCode === 13) {
+            event.preventDefault();
+            document.querySelector("input").click();
+        }
+        });
+        // show upload image
+        function previewImage(obj)
+        {
+            var fileReader = new FileReader();
+            fileReader.onload = (function() {
+                document.getElementById('preview').src = fileReader.result;
+            });
+            fileReader.readAsDataURL(obj.files[0]);
+        }
+        // ページリロード用
+        window.addEventListener('pageshow',()=>{
+            if(window.performance.navigation.type==2) location.reload();
+        });
+    </script>
+    
+</body>
+</html>

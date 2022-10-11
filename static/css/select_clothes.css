@@ -1,0 +1,105 @@
+body {
+    background: linear-gradient(45deg, #EAECF0, #DEE9FF, #BAD2FF, #9BBEFF, #F2C1FF, #F0BBFF);
+    background-size: 1200% 1200%;
+    animation: GradientBackground 10s ease infinite;
+    font-family: 'Josefin Sans', sans-serif;
+}
+figcaption {
+    background-color: #222;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+}
+figure {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    max-width: 200px;
+    margin: auto;
+}
+
+/* *************************************** */
+.cp_ipselect {
+	overflow: hidden;
+	width: 250px;
+	margin: 2em auto;
+	text-align: center;
+}
+.cp_ipselect select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+    display: none;
+}
+.cp_ipselect.cp_sl04 {
+	position: relative;
+	border-radius: 2px;
+	border: 2px solid #313131;
+  border-radius: 50px;
+	background: #ffffff;
+}
+.cp_ipselect.cp_sl04::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.8em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #313131;
+	pointer-events: none;
+}
+.cp_ipselect.cp_sl04 select {
+	padding: 8px 38px 8px 8px;
+	color: #313131;
+}
+/* *************************************** */
+
+.submit_button a {
+    background: #eee;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em auto;
+    max-width: 240px;
+    height: 40px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
+    text-decoration:none;
+}
+.submit_button a:hover {
+    background: #313131;
+    color: #FFF;
+    text-decoration:none;
+}
+
+@keyframes GradientBackground {
+0% {
+    background-position: 0% 50%;
+}
+
+50% {
+    background-position: 100% 50%;
+}
+
+100% {
+    background-position: 0% 50%;
+}
+};

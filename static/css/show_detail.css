@@ -1,0 +1,55 @@
+body {
+    background: linear-gradient(45deg, #EAECF0, #DEE9FF, #BAD2FF, #9BBEFF, #F2C1FF, #F0BBFF);
+    background-size: 1200% 1200%;
+    animation: GradientBackground 10s ease infinite;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+figure {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    width: 400px;
+    margin: auto;
+}
+
+.holder {
+    height: 100%;
+  }
+.holder .middle {
+    height: 100%;
+}
+
+.item_name{
+    font-size: 25px;
+    font-weight: bold;
+    margin: auto;
+}
+.item_price{
+    font-size: 40px;
+    font-weight: bold;
+    color: crimson;
+    margin: auto;
+}
+.item_maker{
+    font-weight: bold;
+}
+.item_ex_text{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+@keyframes GradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    
+    50% {
+        background-position: 100% 50%;
+    }
+    
+    100% {
+        background-position: 0% 50%;
+    }
+    };
